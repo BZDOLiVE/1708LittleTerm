@@ -5,19 +5,25 @@ public class User {
     private String name, sex;
     private Date birthday;
     private String address;
-    private int telnum;
-    private String recommender, job;
+    private String telnum;
+    private String recommender, job, zwh;
     private String authorization;
+
+
 
     public User(String _username, String _password){
         this.username = _username; this.password = _password;
         name = "?"; sex = "?"; birthday = new Date(); address = "?";
-        telnum = -1; recommender = "?"; job = "?"; authorization = "?";
+        telnum = "?"; recommender = "?"; job = "?"; authorization = "?"; zwh = "?";
     }
 
-    public void setInformation(String name, String sex, Date birthday, String address, int telnum, String recommender, String job){
-        this.name = name; this.sex = sex; this.birthday = birthday; this.address = address;
-        this.telnum = telnum; this.recommender = recommender; this.job = job;
+    public void setBirthday(String year, String month, String date){
+        birthday = new Date(year, month, date);
+    }
+
+    public void setInformation(String name, String sex, String address, String telnum, String recommender, String job, String zwh){
+        this.name = name; this.sex = sex;  this.address = address;
+        this.telnum = telnum; this.recommender = recommender; this.job = job; this.zwh = zwh;
     }
 
 
@@ -69,11 +75,11 @@ public class User {
         this.address = address;
     }
 
-    public int getTelnum() {
+    public String getTelnum() {
         return telnum;
     }
 
-    public void setTelnum(int telnum) {
+    public void setTelnum(String telnum) {
         this.telnum = telnum;
     }
 
@@ -101,45 +107,51 @@ public class User {
         this.authorization = authorization;
     }
 
+    public String getZwh() {
+        return zwh;
+    }
 
+    public void setZwh(String zwh) {
+        this.zwh = zwh;
+    }
 }
 
 class Date{
-    private int year, month, day;
-    public Date(int _year, int _month, int _day){
+    private String year, month, day;
+    public Date(String _year, String _month, String _day){
         this.year = _year; this.month = _month; this.day = _day;
     }
     public Date(){
-        year = 0; month = 0; day = 0;
+        year = "?"; month = "?"; day = "?";
     }
-    public void set(int _year, int _month, int _day){
+    public void set(String _year, String _month, String _day){
         this.year = _year; this.month = _month; this.day = _day;
     }
     public String toString(){
-        return " " + Integer.toString(year) + "年" + Integer.toString(month) + "月" + Integer.toString(day) + "日 ";
+        return year + "年" + month + "月" + day + "日 ";
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
-    public int getMonth() {
+    public String getMonth() {
         return month;
     }
 
-    public void setMonth(int month) {
+    public void setMonth(String month) {
         this.month = month;
     }
 
-    public int getDay() {
+    public String getDay() {
         return day;
     }
 
-    public void setDay(int day) {
+    public void setDay(String day) {
         this.day = day;
     }
 

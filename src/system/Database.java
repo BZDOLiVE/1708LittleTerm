@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Database {
     String driver, url, username, password;
     Connection conn;
-    Statement statement1, statement2, statement3;
+    Statement statement1, statement2, statement3, statement4;
     public ArrayList<User> UserList;
 
     public Database(){
@@ -46,6 +46,7 @@ public class Database {
             statement1 = conn.createStatement();
             statement2 = conn.createStatement();
             statement3 = conn.createStatement();
+            statement4 = conn.createStatement();
 
         } catch(ClassNotFoundException e) {
             System.out.println("Sorry,can`t find the Driver!");
@@ -54,6 +55,26 @@ public class Database {
             e.printStackTrace();
         } catch(Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public boolean CheckUsername(String username){
+        String sql1 = "SELECT * FROM userdata WHERE username = ";
+        sql1 += ("\"" + username + "\"") ;
+        try {
+            ResultSet rs1 = statement3.executeQuery(sql1);
+            if(rs1.next()){
+                System.out.println("用户名已存在");
+                return false;
+            }
+            else{
+                //System.out.println("不存在这个用户");
+                return true;
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return false;
         }
     }
 
@@ -90,7 +111,7 @@ public class Database {
         String sql1 = "SELECT * FROM userdata WHERE username = ";
         sql1 += ("\"" + username + "\"") ;
         try {
-            ResultSet rs1 = statement3.executeQuery(sql1);
+            ResultSet rs1 = statement2.executeQuery(sql1);
             if(rs1.next()){
                 //u.setPassword(rs1.getString("password"));
 				if(password.equals(rs1.getString("password")) && rs1.getString("authorization").equals("admin")){
@@ -113,5 +134,28 @@ public class Database {
             return "error";
         }
 
+    }
+
+    public void SignUpUser(User u){
+        String sql1 = "INSERT INTO USERDATA" +
+                " VALUES (" + "\"" + u.getUsername() + "\"" +
+                "," + "\"" + u.getPassword() + "\"" +
+                "," + "\"" + "申请中" + "\"" +
+                "," + "\"" + u.getName() + "\"" +
+                "," + "\"" + u.getSex() + "\"" +
+                "," + "\"" + u.getBirthday().toString() + "\"" +
+                "," + "\"" + u.getAddress() + "\"" +
+                "," + "\"" + u.getTelnum() + "\"" +
+                "," + "\"" + u.getRecommender() + "\"" +
+                "," + "\"" + u.getJob() + "\"" +
+                "," + "\"" + u.getZwh() + "\"" +
+                ");";
+        try {
+            statement4.executeUpdate(sql1);
+            System.out.println("插入成功");
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }

@@ -12,7 +12,7 @@ public class Login_GUI {
     private JTextField tF_Password;
     private JButton btn_SignIn;
     private JButton btn_SignUp;
-    private JPanel pnl_Login;
+    public JPanel pnl_Login;
     private JPanel pnl_Input;
     private JLabel lbl_Username;
     private JLabel lbl_Password;
@@ -41,6 +41,9 @@ public class Login_GUI {
                 }
                 else if(authorization.equals("writer")){
                     System.out.println("登陆成功");
+                    frame.setContentPane(new Chose_Fuc_page(frame, authorization).Chose_Fuc_page);
+                    frame.pack();
+                    frame.setBounds(frame.getX(), frame.getY(), 600, 450);
                 }
                 else{
                     System.out.println("error");
@@ -49,6 +52,14 @@ public class Login_GUI {
 
 
 
+            }
+        });
+        btn_SignUp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setContentPane(new SignUp_page(frame, db).SignUp_page);
+                frame.pack();
+                frame.setBounds(frame.getX(), frame.getY(), 600, 450);
             }
         });
     }
