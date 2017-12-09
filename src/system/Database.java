@@ -24,7 +24,7 @@ public class Database {
         username = "root";
 
         // MySQL配置时的密码
-        password = "buzhidao96923";
+        password = "";
 
         UserList = new ArrayList<User>();
 
