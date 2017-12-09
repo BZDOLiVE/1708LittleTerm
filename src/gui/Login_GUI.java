@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class Login_GUI {
 
     private JTextField tF_Username;
-    private JTextField tF_Password;
+
     private JButton btn_SignIn;
     private JButton btn_SignUp;
     public JPanel pnl_Login;
@@ -20,6 +20,7 @@ public class Login_GUI {
     private JScrollPane sclpnl_Information;
     private JPanel pnl_Title;
     private JLabel lbl_Title;
+    private JPasswordField pF_Password;
 
     private JFrame frame;
     private Database db;
@@ -31,17 +32,17 @@ public class Login_GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String username = tF_Username.getText();
-                String password = tF_Password.getText();
+                String password = pF_Password.getText();
                 String authorization = db.SignInCheck(username, password);
                 if(authorization.equals("admin")) {
                     System.out.println("登陆成功");
-                    frame.setContentPane(new Chose_Fuc_page(frame, authorization).Chose_Fuc_page);
+                    frame.setContentPane(new Chose_Fuc_page(frame, authorization, username, db).Chose_Fuc_page);
                     frame.pack();
-                    frame.setBounds(200, 100, 600, 450);
+                    frame.setBounds(frame.getX(), frame.getY(), 600, 450);
                 }
                 else if(authorization.equals("writer")){
                     System.out.println("登陆成功");
-                    frame.setContentPane(new Chose_Fuc_page(frame, authorization).Chose_Fuc_page);
+                    frame.setContentPane(new Chose_Fuc_page(frame, authorization, username, db).Chose_Fuc_page);
                     frame.pack();
                     frame.setBounds(frame.getX(), frame.getY(), 600, 450);
                 }
@@ -49,8 +50,6 @@ public class Login_GUI {
                     System.out.println("error");
                     JOptionPane.showMessageDialog(frame, "用户名或密码错误","错误",JOptionPane.ERROR_MESSAGE);
                 }
-
-
 
             }
         });

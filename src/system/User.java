@@ -8,13 +8,21 @@ public class User {
     private String telnum;
     private String recommender, job, zwh;
     private String authorization;
+    private String recomm;
 
 
 
     public User(String _username, String _password){
         this.username = _username; this.password = _password;
         name = "?"; sex = "?"; birthday = new Date(); address = "?";
-        telnum = "?"; recommender = "?"; job = "?"; authorization = "?"; zwh = "?";
+        telnum = "?"; recommender = "?"; job = "?"; authorization = "未审核"; zwh = "?";
+        recomm = "?";
+    }
+
+    public User(String _username){
+        this.username = _username; password = "?";
+        name = "?"; sex = "?"; birthday = new Date(); address = "?";
+        telnum = "?"; recommender = "?"; job = "?"; authorization = "未审核"; zwh = "?";
     }
 
     public void setBirthday(String year, String month, String date){
@@ -114,12 +122,24 @@ public class User {
     public void setZwh(String zwh) {
         this.zwh = zwh;
     }
+
+    public String getRecomm() {
+        return recomm;
+    }
+
+    public void setRecomm(String recomm) {
+        this.recomm = recomm;
+    }
 }
 
 class Date{
-    private String year, month, day;
+    private String year, month, day, birthday;
     public Date(String _year, String _month, String _day){
         this.year = _year; this.month = _month; this.day = _day;
+        birthday = "?";
+    }
+    public Date(String _birthday){
+        this.birthday = _birthday;
     }
     public Date(){
         year = "?"; month = "?"; day = "?";
@@ -128,7 +148,12 @@ class Date{
         this.year = _year; this.month = _month; this.day = _day;
     }
     public String toString(){
-        return year + "年" + month + "月" + day + "日 ";
+        if(birthday.equals("?")) {
+            return year + "年" + month + "月" + day + "日 ";
+        }
+        else{
+            return birthday;
+        }
     }
 
     public String getYear() {

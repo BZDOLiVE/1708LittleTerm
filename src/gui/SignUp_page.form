@@ -164,15 +164,8 @@
         </constraints>
         <properties>
           <model>
-            <item value="战士"/>
-            <item value="法师"/>
-            <item value="牧师"/>
-            <item value="德鲁伊"/>
-            <item value="死亡骑士"/>
-            <item value="猎人"/>
-            <item value="术士"/>
-            <item value="刺客"/>
-            <item value="圣骑士"/>
+            <item value="是"/>
+            <item value="否"/>
           </model>
         </properties>
       </component>
@@ -182,18 +175,8 @@
         </constraints>
         <properties>
           <model>
-            <item value="人类"/>
-            <item value="兽族"/>
-            <item value="暗夜精灵"/>
-            <item value="亡灵"/>
-            <item value="熊猫人"/>
-            <item value="狼人"/>
-            <item value="血精灵"/>
-            <item value="矮人"/>
-            <item value="巨魔"/>
-            <item value="牛头人"/>
-            <item value="娜迦"/>
-            <item value="鱼人"/>
+            <item value="是"/>
+            <item value="否"/>
           </model>
         </properties>
       </component>
@@ -384,6 +367,22 @@
           </component>
         </children>
       </grid>
+      <component id="5afb5" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="长度上限15字符"/>
+        </properties>
+      </component>
+      <component id="75a62" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="长度上限15字符"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
